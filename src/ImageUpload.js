@@ -24,7 +24,7 @@ function ImageUpload() {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post('https://image-to-text-be.onrender.com/upload', formData, {
         responseType: 'blob',
       });
 
@@ -54,7 +54,7 @@ function ImageUpload() {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:5000/answer', formData, {
+      const response = await axios.post('https://image-to-text-be.onrender.com/answer', formData, {
         responseType: 'blob',
       });
 
