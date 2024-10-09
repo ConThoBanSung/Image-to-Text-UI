@@ -31,7 +31,7 @@ function ImageUpload() {
       const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.setAttribute('download', 'text.txt');
+      link.setAttribute('download', 'questions.txt');
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -45,11 +45,30 @@ function ImageUpload() {
 
   // Gửi yêu cầu answer
   const handleAnswer = async () => {
+    if (!selectedFile) {
+      setMessage('Vui lòng chọn một file trước khi gửi yêu cầu answer!');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', selectedFile);
+
     try {
-      const response = await axios.post('http://localhost:5000/answer');
-      setMessage('Đã gửi yêu cầu answer!');
+      const response = await axios.post('http://localhost:5000/answer', formData, {
+        responseType: 'blob',
+      });
+
+      const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.setAttribute('download', 'answers.txt');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setMessage('Đã gửi yêu cầu answer thành công!');
     } catch (error) {
-      console.error('Lỗi khi gửi answer:', error);
+      console.error('Lỗi khi gửi yêu cầu answer:', error);
       setMessage('Đã xảy ra lỗi khi gửi yêu cầu answer.');
     }
   };
@@ -67,8 +86,7 @@ function ImageUpload() {
   return (
     <div>
       <div className="upload-container">
-        <h1>Image to Text for Question
-        </h1>
+        <h1>Image to Text for Question</h1>
         <input type="file" accept="image/*" onChange={handleFileChange} />
         <div className="button-container">
           <button onClick={handleUpload}>Upload</button>
