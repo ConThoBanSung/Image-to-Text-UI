@@ -1,0 +1,194 @@
+/* Hiệu ứng chuyển đổi màu RGB cho background */
+@keyframes rgbBackground {
+    0% {
+      background-color: #0004ff;
+    }
+    33% {
+      background-color: #d8c1c5;
+    }
+    66% {
+      background-color: #6b6bff;
+    }
+    100% {
+      background-color: #000000;
+    }
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    animation: rgbBackground 10s linear infinite;
+    color: white;
+    background: linear-gradient(45deg, #f8f8f8, #000000, #6b6bff);
+    background-size: 400% 400%;
+    height: 100vh; /* Đảm bảo chiều cao 100% cho body */
+    display: flex; /* Căn giữa nội dung */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+  
+  /* Container chính cho nội dung */
+  .upload-container {
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.7); /* Thêm màu nền cho container */
+    border-radius: 100px; /* Bo góc cho container */
+  }
+  
+  /* Button với hiệu ứng RGB */
+  @keyframes rgbButton {
+    0% {
+      background-color: #333;
+    }
+    33% {
+      background-color: #ff6b6b;
+    }
+    66% {
+      background-color: #6b6bff;
+    }
+    100% {
+      background-color: #333;
+    }
+  }
+  
+  button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    animation: rgbButton 5s linear infinite; /* Thay đổi từ ease thành linear */
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  .message {
+    color: #00ff00;
+    margin-top: 15px;
+    font-size: 18px;
+  }
+  
+  /* Nút Social */
+  .social-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1000;
+    animation: rgbButton 5s linear infinite; /* Thay đổi từ ease thành linear */
+  }
+  
+  .social-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Dropdown Social */
+  .social-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+    transition: max-height 0.5s ease-out; /* Hiệu ứng lướt */
+    overflow: hidden;
+  }
+  
+  .social-dropdown button {
+    display: block;
+    background-color: #555;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 5px;
+    animation: rgbButton 5s linear infinite; /* Thay đổi từ ease thành linear */
+  }
+  
+  .social-dropdown button:hover {
+    background-color: #777;
+  }
+  
+  .social-dropdown a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .social-dropdown a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Nút Donate */
+  .donate-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1000;
+    animation: rgbButton 5s linear infinite; /* Thay đổi từ ease thành linear */
+  }
+  
+  .donate-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Modal cho thông tin STK */
+  .modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    width: 300px;
+    color: black;
+  }
+  
+  .modal h2 {
+    margin: 0;
+  }
+  
+  .modal button {
+    margin-top: 15px;
+    background-color: #e91e63;
+    color: white;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
